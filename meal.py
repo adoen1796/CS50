@@ -8,32 +8,37 @@ In meal.py, implement a program that
 # For instance, 
 # whether it’s 7:00, 7:01, 7:59, or 8:00, 
 # or anytime in between, it’s time for breakfast.
+
+Structure your program per the below, wherein
+convert is a function (that can be called by main) 
+that converts time, a str in 24-hour format, to the
+corresponding number of hours as a float. 
+For instance, given a time like "7:30" (i.e., 7 hours and 30 minutes), convert should return 7.5 (i.e., 7.5 hours).
 """
 
 def main():
-    time = input("What time is it? ").strip()
-    if convert(time) == "breakfast":
-        print("breakfast time")
-    elif convert(time) == "lunch":
-        print("lunch time")
-    elif convert(time) == "dinner":
-        print("dinner time")
+    time = input("Enter time in 24-hour format (HH:MM): ").strip()
+    hours = convert(time)  # Convertimos a float
+    
+    # Siempre imprimimos la hora en float
+    print(f"Float time is: {hours:.2f}")
 
+    # Comprobamos si es horario de alguna comida
+    if 7 <= hours <= 8:
+        print("breakfast")
+    elif 12 <= hours <= 13:
+        print("lunch")
+    elif 18 <= hours <= 19:
+        print("dinner")
+    # Si no es horario de comida, solo imprime la hora en float
 
 
 def convert(time):
-    # Split the time into hours and minutes
-    hours, minutes = map(int, time.split(':'))
+    hours, minutes = time.split(":")
+    hours = int(hours)
+    minutes = int(minutes)
+    return hours + minutes / 60
 
-    # Check the time ranges 
-    if 7 <= hours < 11 or (hours == 11 and minutes == 0):
-        return "breakfast"
-    elif 11 <= hours < 15 or (hours == 15 and minutes == 0):
-        return "lunch"
-    elif 17 <= hours < 21 or (hours == 21 and minutes == 0):
-        return "dinner"
-    else:
-        return None
 
 if __name__ == "__main__":
-    main()   
+    main()
