@@ -23,14 +23,14 @@ def main():
     # Siempre imprimimos la hora en float
     print(f"Float time is: {hours:.2f}")
 
-    # Comprobamos si es horario de alguna comida
+    
     if 7 <= hours <= 8:
         print("breakfast")
     elif 12 <= hours <= 13:
         print("lunch")
     elif 18 <= hours <= 19:
         print("dinner")
-    # Si no es horario de comida, solo imprime la hora en float
+    
 
 
 def convert(time):
